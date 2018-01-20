@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <form action="/photos" method="POST">
+        <div class="form-group">
+            <label for="img">Image</label>
+            <input type="text" class="form-control" name="photo[img]" placeholder="imgURL:">
+        </div>
+        <div class="form-group">
+            <label for="text">Description</label>
+            <textarea name="photo[text]" class="form-control" placeholder="Description:"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/photos" class="btn btn-warning">Cancel</a>
+    </form>
+</div>
+
+<% include ./partials/footer %>

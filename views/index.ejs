@@ -1,0 +1,25 @@
+<% include ./partials/header %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <% photos.forEach(function(photo) { %>
+                    <div class="thumbnail" >
+                        <img src="<%= photo.img %>" alt="Unfound Img" width="100%">
+                        <div class="caption">
+                             <p><%= photo.text.substring(0, 30) %></p>
+                        </div>
+                        <a href="/photos/<%= photo._id %>" class="btn btn-primary">View More</a>
+                    </div> 
+                    
+                <% });  %>
+            </div>
+            <div class="col-lg-1"></div>
+            
+        </div>
+        <a class="btn btn-primary" href="/photos/new">Add</a>
+    </div>
+
+
+<% include ./partials/footer %>

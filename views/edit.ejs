@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <form action="/photos/<%= photo._id %>?_method=PUT" method="POST">
+        <div class="form-group">
+            <label for="img">Image</label>
+            <input type="text" class="form-control" name="photo[img]" value="<%= photo.img %>">
+        </div>
+        <div class="form-group">
+            <label for="text">Description</label>
+            <textarea name="photo[text]" class="form-control" placeholder="<%= photo.text %>"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="/photos" class="btn btn-warning">Cancel</a>
+    </form>
+</div>
+
+<% include ./partials/footer %>

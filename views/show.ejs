@@ -1,0 +1,53 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="thumbnail">
+                <img src="<%= photo.img %>" alt="unfounded img" width="100%">
+                <div class="caption">
+                    <p><%= photo.text %></p>
+                    <p>submitted by<%= photo.author.username %></p>
+                </div>
+                
+                
+                <% photo.comments.forEach(function(comment) { %>
+                    <blockquote>
+                      <p><%= comment.text %></p>
+                      <footer><%= comment.author.username %></footer>
+                    </blockquote>
+                <% }); %>
+                
+                <div class="well">
+                     <form action="/photos/<%= photo._id %>/comments" method="POST">
+                    <label>Add comment</label>
+    
+                    <div class="form-group">
+                     
+                        <input type="text" class="form-control" name="comment[text]" placeholder="comment">
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success  text-right">SubmitComment</button>
+                    </div>
+                   
+                    
+                </form>
+                </div>
+               
+                <% if (currentUser._id.equals(photo.author.id)) { %>
+                    <a href="/photos/<%= photo._id %>/edit" class="btn btn-info">Edit</a>
+                    <form id="form-delete" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+                        
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        
+                    </form> 
+                <% } %>
+                <a href="/photos" class="btn btn-warning">Back</a>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+
+<% include ./partials/footer %>
